@@ -1,0 +1,16 @@
+const axios = require("../utils/axios");
+const BASE_URL = "http://localhost:5000";
+
+
+//return all the constellation resources
+function index() {
+    return axios
+    .get(`${BASE_URL}/constellations`)
+    .then(({ data }) => {
+        const result = data.filter((constellation) => {
+            return constellation;
+        })
+        console.log(result);
+    })
+} 
+

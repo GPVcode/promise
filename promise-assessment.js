@@ -32,7 +32,7 @@ async function fullSession(question){
     const messageOne = await welcome();
     results.push(messageOne);
     const messageTwo = await getFortune(question);
-    typeof messageTwo === "string" ? results.push(question) : results.push(...question);
+    typeof messageTwo === "string" ? results.push(messageTwo) : results.push(...messageTwo);
     const bye = await goodbye();
     results.push(bye);
     return results
