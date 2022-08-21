@@ -14,3 +14,175 @@ function index() {
     })
 } 
 
+// take object and create
+function create(){
+    return axios
+    .post(`${BASE_URL}/constellations`, body)
+    .then(( {data} ) => console.log(data))
+    .catch(( {message}) => console.error(message))
+}
+
+
+//return all students with score less than 80
+function index(){
+    return axios
+    .get(`${BASE_URL}/students`)
+    .then(( { data }) => {
+        const result = data.filter((student) => {
+            return student.score < 80
+        })
+        return result;
+    })
+    .catch(({ message }) => {
+        console.error(message)
+    })
+}
+
+function findStudents(){
+    return axios
+    .get(`${BASE_URL}/students`)
+    .then(({ data }) => {
+        results = data.filter((student) => {
+            return student.score < 80
+        })
+        return results
+    })
+    .catch(({message}) => console.error(message))
+}
+
+// create a function that takes in body and create a new student
+function createBody(body){
+    return axios
+    .put(`${BASE_URL}/students`, body)
+    .then(( { data }) => data)
+    .catch(({message}) => {
+        console.error(message)
+});
+}
+
+// create a function called show and take an id and return student
+function show(id){
+    return axios
+    .get(`${BASE_URL}/constellations/${id}`)
+    .then(({data}) => data)
+    .catch(({message}) => console.error(message))
+}
+
+//create function that returns students with score less than 80
+function index(){
+    return axios
+    .get(`${BASE_URL}/students`)
+    .then(( {data} ) => {
+        let result = data.filter((student) => {
+            return student.score < 80;
+        })
+        return result
+    })
+    .catch(({ message } ) => console.error(message)))
+}
+
+//create a function named index that shoudl return all constellation resources
+function index(){
+    return axios
+    .get(`${BASE_URL/constellations}`)
+    .then(({data}) => {
+        const result = data.filter((constellation) => {
+            return constellation
+        })
+        console.log(result)
+    })
+}
+
+
+// create() function that takes in body object and create a new constellation
+function create(body){
+    return axios
+    .post(`BASE_URL/constellation`, body)
+    .then(({data}) => console.log(data))
+    .catch(({message}) => console.error(message))
+}
+
+//show() function that takes id and return constellation for given contellation
+function show(id){
+    return axios
+    .get(`${BASE_URL/constellation}/${id}`)
+    .then(({data}) => console.log(data))
+    .catch(({message}) => console.error(message))
+}
+
+function update(id, body){
+    return axios
+    .put(`${BASE_URL}/constellation/${id}`, body)
+    .then(({data}) => console.log(data))
+    .catch(({message}) => console.error(message))
+}
+
+function update(id, body){
+    return axios
+    .get(`BASE_URL/constellation/${id}`, body)
+    .then(({data}) => console.log(data))
+    .catch(({message}) => console.log(message))
+}
+
+function destroy(id){
+    return axios
+    .delete(`BASE_URL/constellation/${id}`)
+    .then(( {data} ) => console.log(data))
+    .catch(( {message}) => console.error(message));
+}
+
+function index(){
+    return axios
+    .get(`BASE_URL/constellations`)
+    .then(({data}) => {
+        results = data.filter((constellation) => {
+            return constellation
+        })
+        console.log(results)
+    })
+}
+
+function create(body){
+    return axios
+    .post(`${BASE_URL}/constellations`, body)
+    .then(({data}) => console.log(data))
+    .catch(({message}) => console.error(message))
+}
+
+function show(id){
+    return axios
+    .get(`${BASE_URL}/constellations/${id}`)
+    .then(({data}) => console.log(data))
+    .catch(({message}) => console.error(message))
+}
+
+function update(id, body){
+    return axios
+    .put(`${BASE_URL}/constellation/${id}`, body)
+    .then(({data}) => console.log(data))
+    .catch(({message}) => console.error(message))
+}
+
+function destroy(id){
+    return axios
+    .delete(`${BASE_URL}/constellation/${id}`)
+    .then(({data}) => {
+        console.log(data)
+    })
+    .catch(({message}) => console.error(message))
+}
+
+
+function findStudents(students){
+    return axios
+    .get(`${BASE_URL}/constellations/${students}`)
+    .then(({student}) => {
+        results = students.filter((student) => {
+            return students.score < 80
+        })
+        return results
+    })
+    .catch(({message}) => console.error(message))
+}
+
+function 

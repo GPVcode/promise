@@ -11,6 +11,19 @@ function getFortune(question){
     })
 }
 
+function getFortune(question){
+    return tell(question)
+    .then((response) => {
+        return [
+        `question: ${question}`
+        `response: ${response}`
+        ]
+    })
+    .catch((error) => {
+        return `error: ${error}`
+    })
+}
+
 //return array of messages
 async function fullSession(question){
     let result = [];
@@ -25,15 +38,43 @@ async function fullSession(question){
     return result;
 }
 
-//create array of messages using welcome(), tell(), and goodbye()
-async function fullSession(question){
+
+
+
+function getFortune(question){
+    return tell(question)
+    .then((response) => {
+        return[
+        `question: ${question}`
+        `response: ${response}`
+        ]
+    })
+    .catch((error) => {
+        return
+        `error: ${error}`
+    })
+}
+
+function messageArray(question){
     let results = [];
 
     const messageOne = await welcome();
     results.push(messageOne);
     const messageTwo = await getFortune(question);
-    typeof messageTwo === "string" ? results.push(messageTwo) : results.push(...messageTwo);
+    typeof message === "string" ? results.push(messageTwo) : results.push(...messageTwo);
     const bye = await goodbye();
     results.push(bye);
     return results
+}
+
+async function messages(question){
+    let result = [];
+    const messageOne = await welcome();
+    results.push(messageOne);
+    const messageTwo = await getFortune(question);
+    typeof messageTwo === "string" ? results.push(messageTwo) : results.push(...messageTwo);
+    const bye = goodbye();
+    results.push(bye)
+
+    return result
 }
