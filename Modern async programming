@@ -1,0 +1,143 @@
+//make request to API to check if spcified constellation exists, if not log error. If existsm make a put request to update the constellation and then log response
+//make api request to check if specified constellation exists, and if so, update that specified id. if not, return error message.
+function updateIfExists(id, body){
+    let url = `${BASE_URL}/constellations/${id}`
+    return axios
+    .get(url)
+    .then((response) => {
+        if(response){
+            return axios
+            .put(url, body)
+            .then(( {data}) => {
+                return data
+            });
+        }})
+    .catch((error) => {
+        return error.message;
+    })
+}
+
+function updateIfExists(id, body){
+    return axios
+    .get(`${BASE_URL}/constellations/${id}`)
+    .then((response) => {
+        return axios
+        .put(`${BASE_URL}/constellations/${id}`, body)
+        .then(({data}) => {
+            return data
+        })
+    })
+    .catch((error) => {
+        return error.message
+    })
+}
+
+//promise all
+function bulkDelete(ids){
+    const promises = ids.map((id) => {
+        const url = `${BASE_URL}/constellations/${id}`;
+        axios.delete(url)
+        return {id}
+    });
+    return Promise.all(promises);
+}
+
+const ids = ["KGQIwSq", "32TN5F8"];
+bulkDelete(ids).then(console.log);
+
+
+//return all ids
+function getConstellations(ids){
+    const promises = ids.map((id) => {
+        const url = `${BASE_URL}/constellations/${id}`
+        return axios
+        .get(url)
+    });
+    return Promise.all(promises)
+}
+
+//Make an API request to delete all
+function deleteBulk(ids){
+    const promises = ids.map((id) => {
+        const url = `${BASE_URL}/constelllations/${id}`
+        axios.delete(url)
+        return {id}
+    })
+    return Promise.all(promises)
+}
+
+async function getConstellationNameById(id){
+    const url = `${BASE_URL}/constellations/${id}`
+    try{
+        const { data } = await axios.get(url);
+        return data.name;
+    } catch (error) {
+        throw `Constellation with id of ${id} could not be found.`
+    }
+}
+
+
+// return a promise that tells fortune if resolve, if not return message
+async function getFortune(question){
+    try{
+        let response = await tell(question);
+        console.log(`Your question was: ${question}`)
+        console.log(`Your fortune is: ${response}`)
+    }
+    catch(error){
+        console.log(`There was an error: ${error}`)
+    };
+}
+
+
+// use async fucntion to return promise based on resolve or response
+async function getFortune(question){
+    try{
+        let response = await tell(question);
+        console.log(`The question is: ${question}`);
+        console.log(`The response: ${response}`)
+    }
+    catch(error){
+        console.log(`There was an error: ${error}`)
+    }
+}
+
+// return promise messages with async functions
+
+const fullSessions = async(question)
+async function fullSession(question){
+    try{
+        let response = await welcome();
+        console.log(response);
+        let fortune = await getFortune(question);
+        let bye = await goodbye();
+        console.log(bye)
+    }
+    catch(error){
+        console.log(`There was an error: ${error}`)
+    };
+}
+
+
+//get all id using Promise.all
+function getId(ids){
+    const promises = ids.map((ids) => {
+        const url = `${BASE_URL}/constellations/${id}`;
+        return axios.get(url)
+    });
+    return Promise.all(promises)
+}
+
+
+async function update(constellation){
+    try{
+        const url = `${BASE_URL}/constellations/${constellation.id}`;
+        let response = await axios.put(url,constellation);
+        return await response
+    }
+    catch(err){
+        console.log(err);
+        return `Updating constellation (id: ${constellation.id})`
+    }
+}
+
